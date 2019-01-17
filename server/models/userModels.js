@@ -15,7 +15,11 @@ const userSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true,
-    }
+    },
+    message:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"messages",
+    }]
 })
 
 userSchema.pre("save",async function(next){
@@ -33,3 +37,5 @@ userSchema.pre("save",async function(next){
         return next(err);
     }
 })
+
+module.exports = mongoose.model("user",userSchema);
