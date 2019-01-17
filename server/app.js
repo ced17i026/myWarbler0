@@ -5,7 +5,7 @@ const express = require("express"),
     bodyParser = require("body-parser"),
     authRoutes = require("./routes/authRoutes"),
     messageRoutes = require("./routes/messageRoutes"),
-    error = require("./handlers/error/errorHandler");
+    error = require("./handlers/error");
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());

@@ -1,8 +1,8 @@
 const db = require("../models/mongoConnect"),
     jwt = require("jsonwebtoken");
-export async function signup(req,res,next){
+exports.signup = async function(req,res,next){
     try{
-        let user = db.user.create(req.body);
+        let user = await db.user.create(req.body);
         let{username,email} = user;
         let token = jwt.sign({
             username,

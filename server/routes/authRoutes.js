@@ -1,8 +1,7 @@
 const express = require("express"),
-    app = express.Router();
+    app = express.Router(),
+    auth = require("../handlers/auth");
 
-
-app.get("/",function(req,res){
-    res.send("This is auth route");
-})
+app.post("/signup",auth.signup);
+//app.post("/signin",auth.signin);
 module.exports = app;
