@@ -4,13 +4,14 @@ const express = require("express"),
     cors = require("cors"),
     bodyParser = require("body-parser"),
     authRoutes = require("./routes/authRoutes"),
-    messageRoutes = require("./routes/messageRoutes");
+    messageRoutes = require("./routes/messageRoutes"),
+    error = require("./handlers/error/errorHandler");
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 app.use("/api/user/",authRoutes);
 app.use("/api/user/message",messageRoutes);
-
+app.use(error);
 app.listen(3001,function(){
     console.log("Server is running...");
 })
