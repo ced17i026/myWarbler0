@@ -9,6 +9,7 @@
   "author": "Shiv Shankar",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^3.0.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mongoose": "^5.4.4"
