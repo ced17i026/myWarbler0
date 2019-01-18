@@ -1,8 +1,7 @@
 const express = require("express"),
-    app = express.Router();
+    app = express.Router({mergeParams:true}),
+    message = require("../handlers/message");
 
 
-app.get("/",function(req,res){
-    res.send("This is message route");
-})
+app.post("/",message.createMessage);
 module.exports = app;

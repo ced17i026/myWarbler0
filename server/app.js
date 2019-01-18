@@ -10,7 +10,7 @@ const express = require("express"),
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 app.use("/api/user/",authRoutes);
-app.use("/api/user/message",messageRoutes);
+app.use("/api/user/:id/message",messageRoutes);
 app.use(error);
 app.listen(3001,function(){
     console.log("Server is running...");
