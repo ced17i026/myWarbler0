@@ -21,3 +21,18 @@ exports.createMessage = async function(req,res,next){
         })
     }
 }
+
+exports.fetchMessages = async function(req,res,next){
+    try{
+        let messages = await db.messages.find().populate("user",{
+            username:true,
+        });
+        return res.status(200).send(messages);
+    }catch(err){
+        return next({
+            ...err,
+            status: 400,
+            message: "Problem in fetching messages"
+        })
+    }
+}

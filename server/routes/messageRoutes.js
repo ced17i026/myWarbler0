@@ -3,5 +3,6 @@ const express = require("express"),
     message = require("../handlers/message");
 
 
-app.post("/",message.createMessage);
+app.post("/",message.createMessage)
+    .get("/",message.fetchMessages);
 module.exports = app;
