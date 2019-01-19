@@ -18,7 +18,7 @@ class AuthForm extends Component{
     }
     handleSubmit(e){
         e.preventDefault();
-
+        
     }
     render(){
         const {heading} = this.props;
