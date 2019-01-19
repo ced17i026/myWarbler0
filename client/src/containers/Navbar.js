@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import{logout} from "../store/actions/auth";
 export const Navbar = function(props){
     return(
         <div>
@@ -14,7 +15,7 @@ export const Navbar = function(props){
                         props.currentUser.isAuthenticated?(
                             <div>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="#" onClick={props.logout}>Log Out</Link>
+                                    <Link className="nav-link" to="/" onClick={props.logout}>Log Out</Link>
                                 </li>
                             </div>
                         ):(

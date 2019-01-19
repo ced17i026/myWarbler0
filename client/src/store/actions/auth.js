@@ -18,7 +18,7 @@ const removeUser = function(){
 
 export const logout = function(){
     return dispatch=>{
-        localStorage.removeItem();
+        localStorage.clear();
         dispatch(removeUser())
     }
 }
