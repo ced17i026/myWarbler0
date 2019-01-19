@@ -1,5 +1,5 @@
 import {ADD_USER, REMOVE_USER} from "../actionTypes";
-import {apiCall} from "../../services/api";
+import {apiCall, setTokenHeader} from "../../services/api";
 import {addError,removeError} from "./Error";
 
 export const addUser = function(userData){
@@ -20,6 +20,7 @@ export const logout = function(){
     return dispatch=>{
         localStorage.clear();
         dispatch(removeUser())
+        setTokenHeader("");
     }
 }
 export const authUser = function(type,data){
@@ -30,6 +31,7 @@ export const authUser = function(type,data){
                     localStorage.setItem("jwtToken",res.token);
                     dispatch(addUser(res));
                     dispatch(removeError());
+                    setTokenHeader(res.token);
                     resolve();
                 }).catch(err=>{
                     dispatch(addError(err.data.message));
