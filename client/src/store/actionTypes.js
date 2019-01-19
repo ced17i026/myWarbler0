@@ -1,4 +1,7 @@
 export const ADD_USER = "ADD_USER",
             REMOVE_USER = "REMOVE_USER",
             ADD_ERROR = "ADD_ERROR",
-            REMOVE_ERROR = "REMOVE_ERROR";
+            REMOVE_ERROR = "REMOVE_ERROR",
+            FETCH_MESSAGES = "FETCH_MESSAGES",
+            DELETE_MESSAGES = "DELETE_MESSAGES",
+            ADD_MESSAGES = "ADD_MESSAGES";
