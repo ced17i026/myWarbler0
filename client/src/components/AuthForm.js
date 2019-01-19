@@ -28,11 +28,16 @@ class AuthForm extends Component{
         })
     }
     render(){
-        const {heading} = this.props;
+        const {heading,error,history,removeError} = this.props;
         const {username,email,password} = this.state;
+        history.listen(()=>{
+            removeError();
+        })
         return(
             <div className="AuthForm">
                 <h1>{heading}</h1>
+                {error.message && 
+                <div className="alert alert-danger">{error.message}</div>}
                 <form onSubmit={this.handleSubmit}>
                     {heading === "Sign Up"&&
                         <div className="form-group">

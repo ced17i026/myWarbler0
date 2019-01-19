@@ -1,6 +1,8 @@
 import {ADD_USER, REMOVE_USER} from "../actionTypes";
 import {apiCall} from "../../services/api";
 import {addError,removeError} from "./Error";
+import { rejects } from "assert";
+import { resolve } from "path";
 
 const addUser = function(userData){
     return {
@@ -24,13 +26,17 @@ export const logout = function(){
 }
 export const authUser = function(type,data){
     return dispatch=>{
-        return apiCall('post',`http://localhost:3001/api/user/${type}`,data)
+        return new Promise((resolve,reject)=>{
+            return apiCall('post',`http://localhost:3001/api/user/${type}`,data)
                 .then(res=>{
                     localStorage.setItem("jwtToken",res.token);
                     dispatch(addUser(res));
                     dispatch(removeError());
+                    resolve();
                 }).catch(err=>{
                     dispatch(addError(err.data.message));
+                    reject();
                 })
+        })
     }
 }

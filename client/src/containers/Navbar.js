@@ -13,20 +13,18 @@ export const Navbar = function(props){
                     </li>
                     {
                         props.currentUser.isAuthenticated?(
-                            <div>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/" onClick={props.logout}>Log Out</Link>
-                                </li>
-                            </div>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/" onClick={props.logout}>Log Out</Link>
+                            </li>
                         ):(
-                            <div>
+                            <ul className="navbar-nav mr-auto">
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/signin">Sign In</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/signup">Sign Up</Link>
                                 </li>
-                            </div>
+                            </ul>
                         )
                     }
                 </ul>
