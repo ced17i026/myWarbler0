@@ -9,7 +9,8 @@ class Main extends Component{
         return (
             <Switch>
                 <Route exact path="/" render={(props)=><Homepage/>}/>
-                <Route exact path="/signup" render={(props)=><AuthForm />}/>
+                <Route exact path="/signup" render={(props)=><AuthForm {...props} heading="Sign Up"/>}/>
+                <Route exact path="/signin" render={(props)=><AuthForm {...props} heading="Sign In"/>}/>
             </Switch>
         )
     }
