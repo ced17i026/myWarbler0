@@ -8,7 +8,7 @@ const express = require("express"),
     messageRoutes = require("./routes/messageRoutes"),
     error = require("./handlers/error");
 
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 app.use(cors());
 app.use("/api/user/",authRoutes);
 app.use("/api/user/:id/message",

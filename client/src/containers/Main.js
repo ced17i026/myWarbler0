@@ -2,15 +2,17 @@ import React,{Component} from "react";
 import {Route,withRouter,Switch} from "react-router-dom";
 import {connect} from "react-redux";
 import {Homepage} from "../components/Homepage";
+import {authUser} from "../store/actions/auth";
 import AuthForm from "../components/AuthForm";
 
 class Main extends Component{
     render(){
+        const {authUser} = this.props;
         return (
             <Switch>
                 <Route exact path="/" render={(props)=><Homepage/>}/>
-                <Route exact path="/signup" render={(props)=><AuthForm {...props} heading="Sign Up"/>}/>
-                <Route exact path="/signin" render={(props)=><AuthForm {...props} heading="Sign In"/>}/>
+                <Route exact path="/signup" render={(props)=><AuthForm {...props} authUser={authUser} heading="Sign Up"/>}/>
+                <Route exact path="/signin" render={(props)=><AuthForm {...props} authUser={authUser} heading="Sign In"/>}/>
             </Switch>
         )
     }
@@ -23,4 +25,4 @@ const mapStateToProps = function(state){
     }
 }
 
-export default withRouter(connect(mapStateToProps,null)(Main));
+export default withRouter(connect(mapStateToProps,{authUser})(Main));

@@ -1,5 +1,4 @@
 import React,{Component} from "react";
-
 class AuthForm extends Component{
     constructor(props){
         super(props);
@@ -18,7 +17,15 @@ class AuthForm extends Component{
     }
     handleSubmit(e){
         e.preventDefault();
-        
+        const type=this.props.heading === "Sign Up"?"signup":"signin";
+        this.props.authUser(type,this.state).then(()=>{
+            this.props.history.push("/");
+        })
+        this.setState({
+            email:"",
+            username:"",
+            password:"",
+        })
     }
     render(){
         const {heading} = this.props;
@@ -26,7 +33,7 @@ class AuthForm extends Component{
         return(
             <div className="AuthForm">
                 <h1>{heading}</h1>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     {heading === "Sign Up"&&
                         <div className="form-group">
                             <label htmlFor="username">Username</label>

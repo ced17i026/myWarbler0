@@ -3,12 +3,14 @@ const db = require("../models/mongoConnect"),
 exports.signup = async function(req,res,next){
     try{
         let user = await db.user.create(req.body);
-        let{username,email} = user;
+        let{_id,username,email} = user;
         let token = jwt.sign({
+            _id,
             username,
             email
         },process.env.SECRET_KEY);
         return res.status(200).json({
+            _id,
             username,
             email,
             token,
