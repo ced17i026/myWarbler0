@@ -4,7 +4,15 @@ import {Provider} from "react-redux";
 import {BrowserRouter as Router} from "react-router-dom";
 import initializeStore from "../store";
 import Main from "./Main";
+import {addUser} from "../store/actions/auth";
+import jwtDecode from "jwt-decode";
 const store = initializeStore();
+if(localStorage.length > 0){
+  let userData = localStorage.jwtToken;
+  if(jwtDecode(localStorage.jwtToken)){
+    store.dispatch(addUser(userData));
+  }
+}
 class App extends Component {
   render() {
     return (

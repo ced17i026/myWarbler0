@@ -1,17 +1,15 @@
 import {ADD_USER, REMOVE_USER} from "../actionTypes";
 import {apiCall} from "../../services/api";
 import {addError,removeError} from "./Error";
-import { rejects } from "assert";
-import { resolve } from "path";
 
-const addUser = function(userData){
+export const addUser = function(userData){
     return {
         type: ADD_USER,
         user: userData,
     }
 }
 
-const removeUser = function(){
+export const removeUser = function(){
     return {
         type: REMOVE_USER,
         user:{}
