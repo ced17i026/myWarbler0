@@ -36,3 +36,20 @@ exports.fetchMessages = async function(req,res,next){
         })
     }
 }
+
+exports.deleteMessage = async function(req,res,next){
+    try{
+        let message = await db.messages.findById(req.params.m_id);
+        await message.remove();
+        return res.status(200).json({
+            status: 200,
+            message: "Message has been successfully deleted",
+        });
+    }catch(err){
+        return next({
+            ...err,
+            status:400,
+            message: "Problem in deleting message",
+        })
+    }
+}

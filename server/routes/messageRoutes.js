@@ -5,4 +5,6 @@ const express = require("express"),
 
 app.post("/",message.createMessage)
     .get("/",message.fetchMessages);
+//delete route
+app.get("/:m_id",message.deleteMessage);
 module.exports = app;
