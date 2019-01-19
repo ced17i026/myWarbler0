@@ -1,10 +1,10 @@
-import {FETCH_MESSAGE,DELETE_MESSAGES,ADD_MESSAGES} from "../actionTypes";
+import {FETCH_MESSAGES,DELETE_MESSAGES,ADD_MESSAGES} from "../actionTypes";
 import {apiCall} from "../../services/api";
 
-const addMessage = function(data){
+const fetchMessage = function(data){
     return {
-        type: ADD_MESSAGES,
-        
+        type: FETCH_MESSAGES,
+        messages: data,
     }
 }
 exports.addMessage = async function(method,userId,data){
@@ -12,7 +12,10 @@ exports.addMessage = async function(method,userId,data){
         return new Promise((resolve,reject)=>{
             return apiCall[method](`http://localhost:3001/api/user/${userId}/message`,data)
                     .then(res=>{
-                        dispatch(addMessage)
+                        dispatch(fetchMessage(res))
+                        resolve();
+                    }).catch(err=>{
+                        reject(err);
                     })
         })
     }

@@ -13,9 +13,14 @@ export const Navbar = function(props){
                     </li>
                     {
                         props.currentUser.isAuthenticated?(
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/" onClick={props.logout}>Log Out</Link>
-                            </li>
+                            <ul className="navbar-nav mr-auto">
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/" onClick={props.logout}>Log Out</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/message/new">New Message</Link>
+                                </li>
+                            </ul>
                         ):(
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item">
