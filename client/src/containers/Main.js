@@ -8,10 +8,10 @@ import AuthForm from "../components/AuthForm";
 
 class Main extends Component{
     render(){
-        const {authUser,error,removeError} = this.props;
+        const {authUser,error,removeError,currentUser} = this.props;
         return (
             <Switch>
-                <Route exact path="/" render={(props)=><Homepage/>}/>
+                <Route exact path="/" render={(props)=><Homepage {...props} user={currentUser}/>}/>
                 <Route exact path="/signup" render={(props)=><AuthForm {...props} removeError={removeError} error={error} authUser={authUser} heading="Sign Up"/>}/>
                 <Route exact path="/signin" render={(props)=><AuthForm {...props} removeError={removeError} error={error} authUser={authUser} heading="Sign In"/>}/>
             </Switch>
