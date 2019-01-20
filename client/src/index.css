@@ -23,7 +23,7 @@ code {
   text-align: center;
   height: 93.2vh;
 }
-.AuthForm{
+.AuthForm,.messageForm{
   width: 50%;
   margin: 10px auto;
 }

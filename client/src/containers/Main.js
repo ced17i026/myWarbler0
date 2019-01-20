@@ -5,7 +5,7 @@ import {Homepage} from "../components/Homepage";
 import {authUser} from "../store/actions/auth";
 import {removeError} from "../store/actions/Error";
 import AuthForm from "../components/AuthForm";
-import message from "../containers/messages";
+import MessagesForm from "../components/messageForm";
 
 class Main extends Component{
     render(){
@@ -15,7 +15,7 @@ class Main extends Component{
                 <Route exact path="/" render={(props)=><Homepage {...props} user={currentUser}/>}/>
                 <Route exact path="/signup" render={(props)=><AuthForm {...props} removeError={removeError} error={error} authUser={authUser} heading="Sign Up"/>}/>
                 <Route exact path="/signin" render={(props)=><AuthForm {...props} removeError={removeError} error={error} authUser={authUser} heading="Sign In"/>}/>
-                <Route exact path="/message/new" component={<messages/>}/>
+                <Route exact path="/message/new" render={()=><MessagesForm/>}/>
             </Switch>
         )
     }
