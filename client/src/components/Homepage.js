@@ -1,10 +1,11 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import MesssageList from "../containers/messages";
 export const Homepage = function(props){
     return (
         <div className="Homepage-full">
             {props.user.isAuthenticated?
-                (<div></div>):
+                (<div><MesssageList/></div>):
                 (
                     <div className="Homepage-sub">
                         <h1>New To Warbler !</h1>

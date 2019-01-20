@@ -19,13 +19,13 @@ const deleteMessage = function(m_id){
         id:m_id,
     }
 }
-export const fetchMessages = function(userId,data){
+export const fetchMessages = function(userId){
     return dispatch=>{
         return new Promise((resolve,reject)=>{
-            return apiCall('get',`http://localhost:3001/api/user/${userId}/message`,data)
+            return apiCall('get',`http://localhost:3001/api/user/${userId}/message`)
                     .then(res=>{
                         dispatch(fetchMessage(res))
-                        resolve();
+                        resolve(res);
                     }).catch(err=>{
                         reject(err);
                     })
