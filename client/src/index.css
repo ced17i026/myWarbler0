@@ -22,6 +22,7 @@ code {
   justify-content: center;
   text-align: center;
   height: 93.2vh;
+  overflow: scroll;
 }
 .AuthForm,.messageForm{
   width: 50%;
@@ -35,6 +36,7 @@ code {
 .message-body{
   width: 270px;
   height: 200px;
+  margin-bottom: 20px;
 }
 .messageAll{
   display: flex;

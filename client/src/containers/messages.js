@@ -10,8 +10,11 @@ class Messages extends Component{
         const {_id,username} = this.props.currentUser.currentUser;
         const messageList = this.props.message.map(message=>{
             return <RenderMessages
+                    key={message._id}
                     id={_id}
+                    handleDelete={()=>{}}
                     m_id={message._id}
+                    mu_id={message.user._id}
                     username={username}
                     text={message.text}
                 />
