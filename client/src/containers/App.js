@@ -8,8 +8,8 @@ import {addUser} from "../store/actions/auth";
 import jwtDecode from "jwt-decode";
 const store = initializeStore();
 if(localStorage.length > 0){
-  let userData = localStorage.jwtToken;
-  if(jwtDecode(localStorage.jwtToken)){
+  let userData = jwtDecode(localStorage.jwtToken);
+  if(userData){
     store.dispatch(addUser(userData));
   }
 }

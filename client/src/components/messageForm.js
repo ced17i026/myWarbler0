@@ -14,15 +14,16 @@ class MessageForm extends Component{
     }
     handleSubmit = e=>{
         e.preventDefault();
-        this.props.handleSubmit(this.state);
-        this.props.history.push("/");
+        this.props.addMessage(this.props.id,this.state)
+        .then(res=>{
+        })
     }
 
     render(){
         return(
-            <form className="form-group messageForm">
+            <form onSubmit={this.handleSubmit} className="form-group messageForm">
                 <label htmlFor="message">Message</label>
-                <input type="text" name="message" onChange={this.handleChange} value={this.state.text} className="form-control" id="message" placeholder="Enter Message"/>
+                <input type="text" name="text" onChange={this.handleChange} value={this.state.text} className="form-control" id="message" placeholder="Enter Message"/>
                 <button type="submit" className="btn btn-primary">Create</button>
             </form>
         )

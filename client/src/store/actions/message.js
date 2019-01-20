@@ -13,7 +13,13 @@ const addMessage = function(data){
         message:data,
     }
 }
-exports.fetchMessage = function(userId,data){
+const deleteMessage = function(m_id){
+    return {
+        type: DELETE_MESSAGES,
+        id:m_id,
+    }
+}
+export const fetchMessages = function(userId,data){
     return dispatch=>{
         return new Promise((resolve,reject)=>{
             return apiCall('get',`http://localhost:3001/api/user/${userId}/message`,data)
@@ -27,12 +33,12 @@ exports.fetchMessage = function(userId,data){
     }
 }
 
-exports.deleteMessage = function(userId,m_id){
+export const deleteMessages = function(userId,m_id){
     return dispatch=>{
         return new Promise((resolve,reject)=>{
             return apiCall('delete',`http://localhost:3001/api/user/${userId}/message/${m_id}`)
                     .then(res=>{
-                        dispatch(fetchMessage(res))
+                        dispatch(deleteMessage(m_id))
                         resolve();
                     }).catch(err=>{
                         reject(err);
@@ -41,7 +47,7 @@ exports.deleteMessage = function(userId,m_id){
     }
 }
 
-exports.addMessage = function(userId,data){
+export const addMessages = function(userId,data){
     return dispatch=>{
         return new Promise((resolve,reject)=>{
             return apiCall('post',`http://localhost:3001/api/user/${userId}/message`,data)

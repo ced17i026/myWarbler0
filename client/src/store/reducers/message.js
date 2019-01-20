@@ -7,7 +7,7 @@ export default  function(state=[],action){
         case FETCH_MESSAGES:
             return [...action.messages];
         case DELETE_MESSAGES:
-            return state.filter(messages=>messages._id!=action.m_id);
+            return state.filter(messages=>messages._id!==action.m_id);
         default:
             return state;
     }
