@@ -27,3 +27,19 @@ code {
   width: 50%;
   margin: 10px auto;
 }
+
+.message-body>img{
+  width: 120px;
+  height: 90px;
+}
+.message-body{
+  width: 270px;
+  height: 200px;
+}
+.messageAll{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
