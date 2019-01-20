@@ -16,6 +16,7 @@ class MessageForm extends Component{
         e.preventDefault();
         this.props.addMessage(this.props.id,this.state)
         .then(res=>{
+            this.props.history.push("/");
         })
     }
 
