@@ -16,7 +16,7 @@ const addMessage = function(data){
 const deleteMessage = function(m_id){
     return {
         type: DELETE_MESSAGES,
-        id:m_id,
+        m_id:m_id,
     }
 }
 export const fetchMessages = function(userId){
@@ -24,7 +24,7 @@ export const fetchMessages = function(userId){
         return new Promise((resolve,reject)=>{
             return apiCall('get',`http://localhost:3001/api/user/${userId}/message`)
                     .then(res=>{
-                        dispatch(fetchMessage(res))
+                        dispatch(fetchMessage(res));
                         resolve(res);
                     }).catch(err=>{
                         reject(err);
@@ -38,7 +38,7 @@ export const deleteMessages = function(userId,m_id){
         return new Promise((resolve,reject)=>{
             return apiCall('delete',`http://localhost:3001/api/user/${userId}/message/${m_id}`)
                     .then(res=>{
-                        dispatch(deleteMessage(m_id))
+                        dispatch(deleteMessage(m_id));
                         resolve();
                     }).catch(err=>{
                         reject(err);

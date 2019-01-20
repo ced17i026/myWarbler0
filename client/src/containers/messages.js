@@ -1,21 +1,27 @@
 import React , {Component} from "react";
 import {connect} from "react-redux";
-import {fetchMessages} from "../store/actions/message";
+import {fetchMessages,deleteMessages} from "../store/actions/message";
 import RenderMessages from "../components/renderMessage";
 class Messages extends Component{
     componentDidMount(){
         this.props.fetchMessages(this.props.currentUser.currentUser._id);
     }
+    handleDelete(id,m_id){
+        this.props.deleteMessages(id,m_id)
+        .then(res=>{
+            
+        })
+    }
     render(){
-        const {_id,username} = this.props.currentUser.currentUser;
+        const {_id} = this.props.currentUser.currentUser;
         const messageList = this.props.message.map(message=>{
             return <RenderMessages
                     key={message._id}
                     id={_id}
-                    handleDelete={()=>{}}
+                    handleDelete={()=>this.handleDelete(_id,message._id)}
                     m_id={message._id}
                     mu_id={message.user._id}
-                    username={username}
+                    username={message.user.username}
                     text={message.text}
                 />
         })
@@ -30,4 +36,4 @@ const mapStateToProps = function(state){
         currentUser: state.currentUser,
     }
 }
-export default connect(mapStateToProps,{fetchMessages})(Messages);
+export default connect(mapStateToProps,{fetchMessages,deleteMessages})(Messages);
