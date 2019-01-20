@@ -2,6 +2,7 @@ import React , {Component} from "react";
 import {connect} from "react-redux";
 import {fetchMessages,deleteMessages} from "../store/actions/message";
 import RenderMessages from "../components/renderMessage";
+
 class Messages extends Component{
     componentDidMount(){
         this.props.fetchMessages(this.props.currentUser.currentUser._id);
@@ -9,7 +10,7 @@ class Messages extends Component{
     handleDelete(id,m_id){
         this.props.deleteMessages(id,m_id)
         .then(res=>{
-            
+
         })
     }
     render(){
