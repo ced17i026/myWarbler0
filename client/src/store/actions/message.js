@@ -27,6 +27,20 @@ exports.fetchMessage = function(userId,data){
     }
 }
 
+exports.deleteMessage = function(userId,m_id){
+    return dispatch=>{
+        return new Promise((resolve,reject)=>{
+            return apiCall('delete',`http://localhost:3001/api/user/${userId}/message/${m_id}`)
+                    .then(res=>{
+                        dispatch(fetchMessage(res))
+                        resolve();
+                    }).catch(err=>{
+                        reject(err);
+                    })
+        })
+    }
+}
+
 exports.addMessage = function(userId,data){
     return dispatch=>{
         return new Promise((resolve,reject)=>{
